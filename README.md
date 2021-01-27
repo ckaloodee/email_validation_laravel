@@ -10,4 +10,4 @@ styles as well. For example:
 EMAIL_RULES = ['required', 'string', 'email:rfc,dns', 'my_valid_email', 'max:255', 'unique:users'];
 ```
 Checkout a really quick block post that I wrote for the story behind that code.
-https://medium.com/@CKaloodee
+https://ckaloodee.medium.com/custom-email-validation-laravel-8-b37b8350ddf2
