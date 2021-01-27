@@ -6,7 +6,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class DraftUserTest extends TestCase
+class RegisterUserTest extends TestCase
 {
 
     /** @test */
@@ -19,7 +19,7 @@ class DraftUserTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => $email]);
 
         $this->post(route('register'), ['email' => $email])
-          ->assertJsonFragment(['invalid_email_code']);
+            ->assertJsonFragment(['invalid_email_code']);
     }
 
     /** @test */
@@ -34,7 +34,8 @@ class DraftUserTest extends TestCase
      * @test
      * @dataProvider data_invalid_emails
      */
-    public function it_can_validate_invalid_emails($value) {
+    public function it_can_validate_invalid_emails($value)
+    {
 
         $this->post(route('register'), ['email' => $value])
             ->assertJsonFragment(['invalid_email_code']);
@@ -63,5 +64,12 @@ class DraftUserTest extends TestCase
             'gibberish' => ['ÎµÎ»Î»Î·Î½Î¹ÎºÎ¬character@mail.com'],
             'invalid_format' => ['this\ still\"not\\allowed@example.com'],
         ];
+    }
+
+    /** @test */
+    public function email_should_be_trimmed()
+    {
+        $this->post(route('register'), ['email' => '  test@mail.gr']);
+        $this->assertDatabaseHas('draft_users', ['email' => 'test@mail.gr']);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      //
+        //
     }
 
     /**
@@ -24,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      Validator::extend(
-        'my_valid_email',
-        'App\Rules\MyValidEmailValidationRule@passes',
+        Validator::extend(
+            'my_valid_email',
+            'App\Rules\MyValidEmailValidationRule@passes',
         );
     }
 }

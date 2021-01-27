@@ -16,7 +16,7 @@ class User extends Authenticatable
     const EMAIL = 'email';
     const EMAIL_RULES = ['required', 'string', 'email', 'my_valid_email', 'max:255', 'unique:users'];
 
-  /** @var string */
+    /** @var string */
     const PASSWORD = 'password';
 
     /**
