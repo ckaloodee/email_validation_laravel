@@ -18,9 +18,9 @@ class Sanitizer
 
         if (isset($userInput['email'])) {
             $userInput['email'] = strtolower($userInput['email']);
-        }
 
-        $request->merge($userInput);
+            $request->merge($userInput);
+        }
 
         return $next($request);
     }
